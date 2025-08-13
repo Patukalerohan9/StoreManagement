@@ -1,0 +1,21 @@
+table {
+  font-size: 14px;
+}
+
+.table tbody {
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #007bff;
+  border-radius: 10px;
+}
+.transparent-container {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+

@@ -1,0 +1,60 @@
+<div class="container my-4  p-3" style="max-height: 90vh; overflow-y: auto;">
+  <div class="text-left mb-3">
+    <h2>Customer Details</h2>
+  </div>
+
+  <!-- Reactive Search -->
+  <form [formGroup]="searchForm" class="mb-3 d-flex justify-content-between">
+    <input type="text" class="form-control w-50" formControlName="searchText" placeholder="Search by name or mobile..." />
+   <div class="d-flex gap-1">
+  <button type="button" class="btn btn-primary py-1 px-2" routerLink="/form">New Order</button>
+  <button type="button" class="btn btn-success py-1 px-2" routerLink="/dashboard">Dashboard</button>
+</div>
+
+
+  </form>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-sm text-center">
+      <thead class="table-dark sticky-top">
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Mobile</th>
+          <th>Dress Type</th>
+          <th>Status</th>
+          <th>Delivery Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of filteredCustomers() | slice:(page-1)*pageSize:(page-1)*pageSize + pageSize; let i = index">
+          <td>{{(page - 1) * pageSize + i + 1}}</td>
+          <td>{{customer.name}}</td>
+          <td>{{customer.mobile}}</td>
+          <td>{{customer.dressType}}</td>
+          <td>{{customer.status}}</td>
+          <td>{{customer.deliveryDate}}</td>
+          <td>
+            <button class="btn btn-sm btn-warning" (click)="updateCustomer(customer)">Update</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination Controls -->
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="page === 1">
+        <button class="page-link" (click)="page = page - 1">Previous</button>
+      </li>
+      <li class="page-item" *ngFor="let p of totalPagesArray()" [class.active]="page === p">
+        <button class="page-link" (click)="page = p">{{p}}</button>
+      </li>
+      <li class="page-item" [class.disabled]="page === totalPages()">
+        <button class="page-link" (click)="page = page + 1">Next</button>
+      </li>
+    </ul>
+  </nav>
+</div>

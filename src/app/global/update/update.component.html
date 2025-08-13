@@ -1,0 +1,42 @@
+<div class="container mt-4">
+    <div class="d-flex gap-1">
+    <button type="button" class="btn btn-outline-primary" routerLink="/custdetails">
+  <i class="bi bi-arrow-left"></i> Back
+</button>
+  <h2>Update Status</h2>
+</div>
+  <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label>Name</label>
+      <input type="text" formControlName="name" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label>Mobile</label>
+      <input type="text" formControlName="mobile" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label>Dress Type</label>
+      <input type="text" formControlName="dressType" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+  <label>Status</label>
+  <select formControlName="status" class="form-control">
+    <option value="" disabled>Select status</option>
+    <option value="In Progress">In Progress</option>
+    <option value="Completed">Completed</option>
+    <option value="Cancelled">Cancelled</option>
+  </select>
+</div>
+
+    <div class="mb-3">
+      <label>Delivery Date</label>
+      <input type="date" formControlName="deliveryDate" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Update</button>
+  </form>
+</div>
+
