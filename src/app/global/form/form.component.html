@@ -1,4 +1,5 @@
-<form [formGroup]="measurementForm" (ngSubmit)="onSubmit()" class="container mt-4">
+<div class="double-bg">
+<form [formGroup]="measurementForm" (ngSubmit)="onSubmit()" class="container ">
   <div class="border rounded p-4 shadow-sm bg-white">
 
   <!-- Personal Info Section -->
@@ -6,6 +7,7 @@
   <button type="button" class="btn btn-outline-primary" routerLink="/dashboard">
     <i class="bi bi-arrow-left"></i> Back
   </button>
+  <button class="btn btn-outline-success" routerLink="/custdetails">Customer Details</button>
   <h5 class="mb-0 text-primary">Personal Information</h5>
 </div>
  
@@ -282,3 +284,4 @@
   </div>
 </form>
 <br>
+</div>

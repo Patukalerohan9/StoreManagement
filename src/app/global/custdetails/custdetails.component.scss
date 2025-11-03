@@ -1,0 +1,14 @@
+.double-bg {
+   background: linear-gradient(
+    to bottom,
+    #ebeff1 0%,
+    #ebeff1 10%,
+    #ffffff 30%,
+    #ffffff 100%
+  );
+ 
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 20px;
+}

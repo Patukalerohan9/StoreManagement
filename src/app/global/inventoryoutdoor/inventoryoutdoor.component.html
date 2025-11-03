@@ -1,0 +1,148 @@
+
+<div class="d-flex justify-content-center align-items-center min-vh-100 double-bg">
+  <div class="container-fluid px-3">
+    <div class="border rounded p-4 shadow-sm bg-white mx-auto" style="max-width: 1200px;">
+<br>
+    <form [formGroup]="outsourceForm" (ngSubmit)="onSubmit()">
+         <div class="d-flex align-items-center gap-2 mb-3">
+  <button type="button" class="btn btn-outline-primary" routerLink="/dashboard">
+    <i class="bi bi-arrow-left"></i> Back
+  </button>
+  <h5 class="mb-0 text-primary">Out-Source Entry</h5>
+</div>
+      <!-- SECTION 1: Customer Details -->
+      <h5 class="text-secondary mb-3">Customer Details</h5>
+      <div class="row g-3">
+        <div class="col-md-3">
+          <label class="form-label fw-semibold">Assigned Date</label>
+          <input type="date" class="form-control" formControlName="assignedDate" />
+        </div>
+        <div class="col-md-3">
+          <label class="form-label fw-semibold">Customer Name</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter customer name"
+            formControlName="customerName"
+          />
+        </div>
+        <div class="col-md-3">
+          <label class="form-label fw-semibold">Mobile Number</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter mobile number"
+            formControlName="customerMobile"
+          />
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label fw-semibold">Outsource Type</label>
+          <select class="form-select" formControlName="outsourceType">
+            <option value="">Select Type</option>
+            <option>Stitching</option>
+            <option>Embroidery</option>
+            <option>Alteration</option>
+            <option>Finishing</option>
+            <option>Others</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- SECTION 2: Outsource Details -->
+      <hr />
+      <h5 class="text-secondary mb-3">Outsource Details</h5>
+      <div class="row g-3">
+        
+        <div class="col-md-4">
+          <label class="form-label fw-semibold">Vendor / Enterprise Name</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter vendor name"
+            formControlName="vendorName"
+          />
+        </div>
+        <div class="col-md-4">
+          <label class="form-label fw-semibold">Vendor Mobile Number</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter vendor mobile"
+            formControlName="vendorMobile"
+          />
+        </div>
+        
+        <div class="col-md-4">
+          <label class="form-label fw-semibold">Expected Delivery Date</label>
+          <input
+            type="date"
+            class="form-control"
+            formControlName="expectedDate"
+          />
+        </div>
+        
+      </div>
+
+      <!-- SECTION 3: Cost & Tracking -->
+      <hr />
+      <h5 class="text-secondary mb-3">Cost & Tracking</h5>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <label class="form-label fw-semibold">Estimated Cost (₹)</label>
+          <input
+            type="number"
+            class="form-control"
+            formControlName="estimatedCost"
+            (input)="updateBalance()"
+          />
+        </div>
+        <div class="col-md-4">
+          <label class="form-label fw-semibold">Advance Paid (₹)</label>
+          <input
+            type="number"
+            class="form-control"
+            formControlName="advancePaid"
+            (input)="updateBalance()"
+          />
+        </div>
+        <div class="col-md-4">
+          <label class="form-label fw-semibold">Balance Amount (₹)</label>
+          <input
+            type="number"
+            class="form-control"
+            formControlName="balanceAmount"
+            readonly
+          />
+        </div>
+      </div>
+
+      <!-- SECTION 4: Attachments -->
+      <hr />
+      <h5 class="text-secondary mb-3">Attachments (Optional)</h5>
+      <div class="row g-3">
+        <div class="col-md-3">
+          <label class="form-label fw-semibold">Reference Image / Design</label>
+          <input type="file" class="form-control" formControlName="referenceImage" />
+        </div>
+       <div class="col-md-9">
+          <label class="form-label fw-semibold">Work Instructions / Notes</label>
+          <textarea
+            class="form-control"
+            rows="2"
+            placeholder="Enter instructions"
+            formControlName="instructions"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="text-center mt-4">
+        <button class="btn btn-primary px-4 me-2" type="submit">Submit</button>
+        <button class="btn btn-outline-secondary px-4" type="reset">Reset</button>
+      </div>
+    </form>
+  </div>
+</div>
+<br>
+</div>

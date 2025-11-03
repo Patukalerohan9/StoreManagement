@@ -1,157 +1,140 @@
-<div class="container my-4 " style="max-height: 90vh; overflow-y: none;">
+<div class="double-bg">
+  <div class="container-fluid my-3 py-3">
 
-
-<div class="text-center">
-<h1>Inventory</h1> 
-</div>
-
-<div class="mb-3">
-    <button class="btn btn-outline-primary" routerLink="/form"> New Order</button>
-    &nbsp;
-    <button class="btn btn-outline-success" routerLink="/custdetails">Customer Details</button>
-  </div>
-  
-  <!-- Section 1: Summary Tiles -->
- <div class="row mb-4 text-center">
-  <!-- Total Customers Card -->
-  <div class="col-md-4">
-    <div class="card bg-primary text-white shadow">
-      <div class="card-body">
-        <h5>Total Customers</h5>
-        <h3>120</h3>
-        <p class="mb-0">Collection: ₹50,000</p>
+    <!-- Header Section -->
+    <div class="text-center mb-4">
+      <h3 class="fw-bold text-primary">Dashboard</h3>
+      <div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
+        <button class="btn btn-outline-primary" routerLink="/form">New Order</button>
+        <button class="btn btn-outline-success" routerLink="/custdetails">Customer Details</button>
+        <button class="btn btn-outline-warning" routerLink="/inventoryoutdoor">Out-Source</button>
+        <button class="btn btn-outline-danger" routerLink="/employee">Employee</button>
       </div>
     </div>
-  </div>
 
-  <!-- In Progress Card -->
-  <div class="col-md-4">
-    <div class="card bg-warning text-dark shadow">
-      <div class="card-body">
-        <h5>In Progress</h5>
-        <h3>35</h3>
-        <p class="mb-0" >Pending Collection: ₹18,000</p>
+    <!-- Section 1: Summary Tiles -->
+    <div class="row g-3 mb-4 text-center">
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card bg-primary text-white shadow h-100">
+          <div class="card-body">
+            <h5>Total Customers</h5>
+            <h3>120</h3>
+            <p class="mb-0">Collection: ₹50,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card bg-warning text-dark shadow h-100">
+          <div class="card-body">
+            <h5>In Progress</h5>
+            <h3>35</h3>
+            <p class="mb-0">Pending Collection: ₹18,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card bg-success text-white shadow h-100">
+          <div class="card-body">
+            <h5>Completed</h5>
+            <h3>85</h3>
+            <p class="mb-0">Collection: ₹32,000</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Completed Card -->
-  <div class="col-md-4">
-    <div class="card bg-success text-white shadow">
-      <div class="card-body">
-        <h5>Completed</h5>
-        <h3>85</h3>
-        <p class="mb-0">Collection: ₹32,000</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-  <!-- Section 2: Customer List -->
-  <div class="mb-4">
-  <h5 class="fw-bold">Customer List</h5>
-  <div class="table-responsive" style="max-height: 250px; overflow-y: auto;">
-    <table class="table table-bordered table-sm text-center">
-      <thead class="table-primary sticky-top">
-        <tr>
-          <th>Name</th>
-          <th>Mobile</th>
-          
-          <th>Dress Type</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Anjali</td><td>9876543210</td><td>Blouse</td><td>Completed</td></tr>
-        <tr><td>Sneha</td><td>9123456789</td><td>Chudidar</td><td>In Progress</td></tr>
-        <tr><td>Meera</td><td>7894561230</td><td>Saree</td><td>Completed</td></tr>
-        <tr><td>Divya</td><td>9988776655</td><td>Lehenga</td><td>New</td></tr>
-        <tr><td>Roshni</td><td>9871234567</td><td>Kurti</td><td>Alteration</td></tr>
-        <tr><td>Kavya</td><td>9090909090</td><td>Gown</td><td>Completed</td></tr>
-        <tr><td>Pooja</td><td>9012345678</td><td>Chudidar</td><td>In Progress</td></tr>
-        <tr><td>Lakshmi</td><td>9080706050</td><td>Blouse</td><td>New</td></tr>
-        <tr><td>Radha</td><td>9029384756</td><td>Saree</td><td>Alteration</td></tr>
-        <tr><td>Geeta</td><td>9988665544</td><td>Lehenga</td><td>Completed</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-  <!-- Section 3: Tables -->
-  <div class="row mb-4">
-    <!-- Upcoming Deliveries -->
-    <div class="col-md-4">
-      <h6 class="fw-bold">Upcoming Deliveries</h6>
-      <div style="max-height: 200px; overflow-y: auto;">
-        <table class="table table-bordered table-sm">
+    <!-- Section 2: Customer List -->
+    <div class="mb-4">
+      <h5 class="fw-bold">Customer List</h5>
+      <div class="table-responsive" style="max-height: 250px; overflow-y: auto;">
+        <table class="table table-bordered table-sm text-center align-middle">
           <thead class="table-primary sticky-top">
             <tr>
               <th>Name</th>
-              <th>Number</th>
-              <th>Delivery Date</th>
+              <th>Mobile</th>
+              <th>Dress Type</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>Anjali</td><td>9876543210</td><td>2025-05-18</td></tr>
-            <tr><td>Meera</td><td>7894561230</td><td>2025-05-20</td></tr>
-            <tr><td>Divya</td><td>9988776655</td><td>2025-05-21</td></tr>
-            <tr><td>Kavya</td><td>9090909090</td><td>2025-05-22</td></tr>
-            <tr><td>Sneha</td><td>9123456789</td><td>2025-05-23</td></tr>
-            <tr><td>Roshni</td><td>9871234567</td><td>2025-05-24</td></tr>
+            <tr><td>Anjali</td><td>9876543210</td><td>Blouse</td><td>Completed</td></tr>
+            <tr><td>Sneha</td><td>9123456789</td><td>Chudidar</td><td>In Progress</td></tr>
+            <tr><td>Meera</td><td>7894561230</td><td>Saree</td><td>Completed</td></tr>
+            <tr><td>Divya</td><td>9988776655</td><td>Lehenga</td><td>New</td></tr>
+            <tr><td>Roshni</td><td>9871234567</td><td>Kurti</td><td>Alteration</td></tr>
+            <tr><td>Kavya</td><td>9090909090</td><td>Gown</td><td>Completed</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- Dress Type Wise Count -->
-    <div class="col-md-4">
-  <h6 class="fw-bold">Dress Type Wise Count(MAY)</h6>
-  <div style="max-height: 200px; overflow-y: auto;">
-    <table class="table table-bordered table-sm">
-      <thead class="table-primary sticky-top">
-        <tr>
-          <th>Dress Type</th>
-          <th>Count</th>
-          <th>Collection</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Blouse</td><td>45</td><td>₹4,500</td></tr>
-        <tr><td>Chudidar</td><td>30</td><td>₹6,000</td></tr>
-        <tr><td>Lehenga</td><td>10</td><td>₹8,000</td></tr>
-        <tr><td>Kurti</td><td>20</td><td>₹3,000</td></tr>
-        <tr><td>Saree Fall</td><td>18</td><td>₹1,800</td></tr>
-        <tr><td>Skirt</td><td>12</td><td>₹2,400</td></tr>
-        <tr><td>Gown</td><td>8</td><td>₹5,600</td></tr>
-      </tbody>
-    </table>
-  </div>  
-</div>
+    <!-- Section 3: Tables -->
+    <div class="row gy-4">
+      <!-- Upcoming Deliveries -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <h6 class="fw-bold">Upcoming Deliveries</h6>
+        <div class="table-responsive" style="max-height: 200px; overflow-y: auto;">
+          <table class="table table-bordered table-sm text-center align-middle">
+            <thead class="table-primary sticky-top">
+              <tr>
+                <th>Name</th>
+                <th>Number</th>
+                <th>Delivery Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Anjali</td><td>9876543210</td><td>2025-05-18</td></tr>
+              <tr><td>Meera</td><td>7894561230</td><td>2025-05-20</td></tr>
+              <tr><td>Divya</td><td>9988776655</td><td>2025-05-21</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-    <!-- New vs Alteration -->
-    <div class="col-md-4">
-  <h6 class="fw-bold">New vs Alteration(MAY)</h6>
-  <div style="max-height: 200px; overflow-y: auto;">
-    <table class="table table-bordered table-sm">
-      <thead class="table-primary sticky-top">
-        <tr>
-          <th>Type</th>
-          <th>Count</th>
-          <th>Collection</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>New</td><td>60</td><td>₹12,000</td></tr>
-        <tr><td>Alteration</td><td>25</td><td>₹3,500</td></tr>
-        <tr><td>Urgent</td><td>5</td><td>₹2,000</td></tr>
-        <tr><td>Repeat Order</td><td>10</td><td>₹4,000</td></tr>
-      </tbody>
-    </table>
+      <!-- Dress Type Wise Count -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <h6 class="fw-bold">Dress Type Wise Count (MAY)</h6>
+        <div class="table-responsive" style="max-height: 200px; overflow-y: auto;">
+          <table class="table table-bordered table-sm text-center align-middle">
+            <thead class="table-primary sticky-top">
+              <tr>
+                <th>Dress Type</th>
+                <th>Count</th>
+                <th>Collection</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Blouse</td><td>45</td><td>₹4,500</td></tr>
+              <tr><td>Chudidar</td><td>30</td><td>₹6,000</td></tr>
+              <tr><td>Kurti</td><td>20</td><td>₹3,000</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- New vs Alteration -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <h6 class="fw-bold">New vs Alteration (MAY)</h6>
+        <div class="table-responsive" style="max-height: 200px; overflow-y: auto;">
+          <table class="table table-bordered table-sm text-center align-middle">
+            <thead class="table-primary sticky-top">
+              <tr>
+                <th>Type</th>
+                <th>Count</th>
+                <th>Collection</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>New</td><td>60</td><td>₹12,000</td></tr>
+              <tr><td>Alteration</td><td>25</td><td>₹3,500</td></tr>
+              <tr><td>Urgent</td><td>5</td><td>₹2,000</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
   </div>
-</div>
-
-  </div>
-
-  <!-- Section 4: Navigate Button -->
 </div>

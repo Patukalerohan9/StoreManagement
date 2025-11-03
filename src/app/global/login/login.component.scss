@@ -1,0 +1,22 @@
+.login-bg {
+  background-image: url("//pexels-pavel-danilyuk-6461513.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(1px);
+}
+
+/* Optional: Add a transparent overlay for better readability */
+.login-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.4); /* adjust opacity */
+  z-index: 0;
+}
+
+/* Keep the card above the overlay */
+.card {
+  position: relative;
+  z-index: 1;
+}

@@ -6,6 +6,10 @@ import { FormComponent } from './form/form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CustdetailsComponent } from './custdetails/custdetails.component';
 import { UpdateComponent } from './update/update.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { InventoryoutdoorComponent } from './inventoryoutdoor/inventoryoutdoor.component';
+import { LoginComponent } from './login/login.component';
+
 
 
 @NgModule({
@@ -13,12 +17,15 @@ import { UpdateComponent } from './update/update.component';
     FormComponent,
     DashboardComponent,
     CustdetailsComponent,
-    UpdateComponent
+    UpdateComponent,
+    EmployeeComponent,
+    InventoryoutdoorComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
     GlobalRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class GlobalModule { }

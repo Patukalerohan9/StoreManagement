@@ -1,0 +1,138 @@
+<div class="double-bg">
+  <div class="container mt-3 pb-3">
+
+    <!-- Back + Title -->
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+      <button type="button" class="btn btn-outline-primary btn-sm" routerLink="/dashboard">
+        <i class="bi bi-arrow-left"></i> Back
+      </button>
+      <h5 class="mb-0 text-primary fw-bold text-center flex-grow-1">Employee Work Monitoring</h5>
+    </div>
+
+    <!-- Form Section -->
+    <form [formGroup]="monitorForm" (ngSubmit)="onSubmit()" class="row g-2 g-md-3 align-items-end">
+
+      <!-- Date -->
+      <div class="col-6 col-md-2">
+        <label class="form-label fw-semibold small">Date</label>
+        <input type="date" class="form-control form-control-sm" formControlName="workDate" />
+      </div>
+
+      <!-- Customer -->
+      <div class="col-6 col-md-2">
+        <label class="form-label fw-semibold small">Customer Name</label>
+        <select class="form-select form-select-sm" formControlName="Cutomer">
+          <option value="" disabled>Select Customer</option>
+          <option>Rekha Uppar</option>
+          <option>Mary Dsouza</option>
+          <option>Arthi Bajantri</option>
+          <option>Fhatima Sheik</option>
+          <option>Aishwarya Salasker</option>
+        </select>
+      </div>
+
+      <!-- Employee -->
+      <div class="col-6 col-md-2">
+        <label class="form-label fw-semibold small">Employee Name</label>
+        <select class="form-select form-select-sm" formControlName="employee">
+          <option value="" disabled>Select Employee</option>
+          <option *ngFor="let emp of employees" [value]="emp">{{ emp }}</option>
+        </select>
+      </div>
+
+      <!-- Work Type -->
+      <div class="col-6 col-md-2">
+        <label class="form-label fw-semibold small">Type of Work</label>
+        <select class="form-select form-select-sm" formControlName="workType">
+          <option value="" disabled>Select Work</option>
+          <option>Blouse Stitching</option>
+          <option>Embroidery</option>
+          <option>Dress Making</option>
+          <option>Alteration</option>
+          <option>Finishing</option>
+          <option>Others</option>
+        </select>
+      </div>
+
+      <!-- Priority -->
+      <div class="col-6 col-md-2">
+        <label class="form-label fw-semibold small">Work Priority</label>
+        <select class="form-select form-select-sm" formControlName="priority">
+          <option value="" disabled>Select</option>
+          <option>Priority</option>
+          <option>Non Priority</option>
+        </select>
+      </div>
+
+      <!-- Submit -->
+      <div class="col-6 col-md-2 d-grid">
+        <button type="submit" class="btn btn-primary btn-sm w-100">Submit</button>
+      </div>
+    </form>
+
+    <hr class="my-3">
+
+    <!-- Table Section -->
+    <div class="card shadow-sm mt-3 p-2 p-md-3">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h6 class="text-secondary mb-0 fw-bold">Today's Records</h6>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped align-middle table-sm">
+          <thead class="table-primary text-center">
+            <tr>
+              <th>SiNo</th>
+              <th>Date</th>
+              <th>Customer</th>
+              <th>Employee</th>
+              <th>Work</th>
+              <th>Priority</th>
+              <th>Status</th>
+              <th>Payment</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngIf="records.length === 0">
+              <td colspan="9" class="text-center text-muted py-3">
+                No records found
+              </td>
+            </tr>
+
+            <tr *ngFor="let record of records; let i = index" class="text-center">
+              <td>{{ i + 1 }}</td>
+              <td>{{ record.workDate }}</td>
+              <td>{{ record.Cutomer }}</td>
+              <td>{{ record.employee }}</td>
+              <td>{{ record.workType }}</td>
+              <td>{{ record.priority }}</td>
+              <td>
+                <select
+                  class="form-select form-select-sm"
+                  [value]="record.status"
+                  (change)="onStatusChange(i, $event)"
+                >
+                  <option value="Assigned">Assigned</option>
+                  <option value="Completed">Completed</option>
+                </select>
+              </td>
+              <td>200</td>
+              <td>
+                <button
+                  class="btn btn-success btn-sm"
+                  [disabled]="record.status === 'Completed'"
+                  (click)="updateRecord(i)"
+                >
+                  Update
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
