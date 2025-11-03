@@ -56,8 +56,22 @@
               <td>{{ customer.status }}</td>
               <td>{{ customer.deliveryDate }}</td>
               <td>
-                <button class="btn btn-warning btn-sm" (click)="updateCustomer(customer)">
-                  Update
+                <button class="btn btn-warning btn-sm"
+        [routerLink]="['/form', customer.id]">
+  Measurement
+</button>
+
+                &nbsp;
+                 <button class="btn btn-success btn-sm" [routerLink]="['/employee']">
+                  Assign
+                </button>
+                  &nbsp;
+                  <button class="btn btn-danger btn-sm" [routerLink]="['/inventoryoutdoor']">
+                  Outsource
+                </button>
+                &nbsp;
+                 <button class="btn btn-primary btn-sm" (click)="updateCustomer(customer)">
+                  Delivery
                 </button>
               </td>
             </tr>

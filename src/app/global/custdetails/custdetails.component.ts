@@ -14,27 +14,32 @@ export class CustdetailsComponent implements OnInit {
   pageSize: number = 10;
 
   customers = [
-    { name: 'Anjali', mobile: '9876543210', dressType: 'Blouse', status: 'Completed', deliveryDate: '2025-05-18' },
-    { name: 'Sneha', mobile: '9123456789', dressType: 'Chudidar', status: 'In Progress', deliveryDate: '2025-05-20' },
-    { name: 'Meera', mobile: '7894561230', dressType: 'Saree', status: 'Completed', deliveryDate: '2025-05-21' },
-    { name: 'Divya', mobile: '9988776655', dressType: 'Lehenga', status: 'New', deliveryDate: '2025-05-22' },
-    { name: 'Roshni', mobile: '9871234567', dressType: 'Kurti', status: 'Alteration', deliveryDate: '2025-05-23' },
-    { name: 'Kavya', mobile: '9090909090', dressType: 'Gown', status: 'Completed', deliveryDate: '2025-05-24' },
-    { name: 'Pooja', mobile: '9012345678', dressType: 'Chudidar', status: 'In Progress', deliveryDate: '2025-05-25' },
-    { name: 'Lakshmi', mobile: '9080706050', dressType: 'Blouse', status: 'New', deliveryDate: '2025-05-26' },
-    { name: 'Radha', mobile: '9029384756', dressType: 'Saree', status: 'Alteration', deliveryDate: '2025-05-27' },
-    { name: 'Geeta', mobile: '9988665544', dressType: 'Lehenga', status: 'Completed', deliveryDate: '2025-05-28' },
-    { name: 'Anjali', mobile: '9876543210', dressType: 'Blouse', status: 'Completed', deliveryDate: '2025-05-18' },
-    { name: 'Sneha', mobile: '9123456789', dressType: 'Chudidar', status: 'In Progress', deliveryDate: '2025-05-20' },
-    { name: 'Meera', mobile: '7894561230', dressType: 'Saree', status: 'Completed', deliveryDate: '2025-05-21' },
-    { name: 'Divya', mobile: '9988776655', dressType: 'Lehenga', status: 'New', deliveryDate: '2025-05-22' },
-    { name: 'Roshni', mobile: '9871234567', dressType: 'Kurti', status: 'Alteration', deliveryDate: '2025-05-23' },
-    { name: 'Kavya', mobile: '9090909090', dressType: 'Gown', status: 'Completed', deliveryDate: '2025-05-24' },
-    { name: 'Pooja', mobile: '9012345678', dressType: 'Chudidar', status: 'In Progress', deliveryDate: '2025-05-25' },
-    { name: 'Lakshmi', mobile: '9080706050', dressType: 'Blouse', status: 'New', deliveryDate: '2025-05-26' },
-    { name: 'Radha', mobile: '9029384756', dressType: 'Saree', status: 'Alteration', deliveryDate: '2025-05-27' },
-    { name: 'Geeta', mobile: '9988665544', dressType: 'Lehenga', status: 'Completed', deliveryDate: '2025-05-28' }
-  ];
+  {
+    id: 1,
+    name: 'Priya Patil',
+    mobile: '9876543210',
+    dressType: 'Lehenga',
+    status: 'Pending With Measurement',
+    deliveryDate: '2025-11-10'
+  },
+  {
+    id: 2,
+    name: 'Sneha Kulkarni',
+    mobile: '9988776655',
+    dressType: 'Saree Blouse',
+    status: 'Pending With Measurement',
+    deliveryDate: '2025-11-03'
+  },
+  {
+    id: 3,
+    name: 'Anjali Desai',
+    mobile: '9123456789',
+    dressType: 'Kurti',
+    status: 'Pending With Measurement',
+    deliveryDate: '2025-11-15'
+  }
+];
+
 
   constructor(private fb: FormBuilder , private  router:Router) {}
 

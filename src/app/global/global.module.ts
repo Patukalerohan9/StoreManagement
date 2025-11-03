@@ -9,6 +9,7 @@ import { UpdateComponent } from './update/update.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { InventoryoutdoorComponent } from './inventoryoutdoor/inventoryoutdoor.component';
 import { LoginComponent } from './login/login.component';
+import { NeworderComponent } from './neworder/neworder.component';
 
 
 
@@ -20,7 +21,8 @@ import { LoginComponent } from './login/login.component';
     UpdateComponent,
     EmployeeComponent,
     InventoryoutdoorComponent,
-    LoginComponent
+    LoginComponent,
+    NeworderComponent
   ],
   imports: [
     CommonModule,

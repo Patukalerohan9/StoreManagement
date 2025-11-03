@@ -31,7 +31,7 @@ loginForm: FormGroup;
     // ✅ Static credentials check
     if (username === 'admin' && password === '12345') {
       this.isSuccess = true;
-      this.message = 'Login successful! 🎉';
+      this.message = 'Login successful';
 
       // Small delay to show success message before redirecting
       setTimeout(() => {

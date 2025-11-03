@@ -1,0 +1,29 @@
+.container {
+  max-width: 800px;
+}
+label {
+  font-weight: 500;
+}
+.scrolling-title-container {
+  overflow: hidden;
+  white-space: nowrap;
+  background: transparent;
+  text-align: center;
+}
+
+.scrolling-title {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 1.8rem;
+  color: #ffd106;
+  animation: slideRight 12s linear infinite;
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

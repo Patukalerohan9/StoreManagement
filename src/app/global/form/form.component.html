@@ -1,287 +1,75 @@
-<div class="double-bg">
-<form [formGroup]="measurementForm" (ngSubmit)="onSubmit()" class="container ">
-  <div class="border rounded p-4 shadow-sm bg-white">
+<div class="container my-4 p-4 bg-light rounded-4 shadow-sm">
+  <h4 class="text-primary mb-4 text-center">Measurement & Payment</h4>
 
-  <!-- Personal Info Section -->
-   <div class="d-flex align-items-center gap-2 mb-3">
-  <button type="button" class="btn btn-outline-primary" routerLink="/dashboard">
-    <i class="bi bi-arrow-left"></i> Back
-  </button>
-  <button class="btn btn-outline-success" routerLink="/custdetails">Customer Details</button>
-  <h5 class="mb-0 text-primary">Personal Information</h5>
-</div>
- 
-<div class="row">
-  <div class="col-md-4 mb-3">
-    <label class="form-label">Customer ID</label>
-    <input type="text" class="form-control" formControlName="id" />
-  </div>
-
- <div class="col-md-4 mb-3">
-    <label class="form-label">Date:</label>
-    <input type="date" class="form-control" formControlName="date" />
+  <!-- Customer Info -->
+  <div *ngIf="customerData" class="border rounded-3 p-3 mb-4 bg-white">
+    <h5 class="text-success mb-3">Customer Information</h5>
+    <div class="row">
+      <div class="col-md-4"><b>Name:</b> {{ customerData.name }}</div>
+      <div class="col-md-4"><b>Mobile:</b> {{ customerData.number }}</div>
+      <div class="col-md-4"><b>Dress Type:</b> {{ customerData.dressType }}</div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-md-4"><b>Status:</b> {{ customerData.status }}</div>
+      <div class="col-md-4"><b>Delivery Date:</b> {{ customerData.deliveryDate }}</div>
+      <div class="col-md-4"><b>Cost:</b> ₹{{ customerData.cost }}</div>
+    </div>
   </div>
 
-  <div class="col-md-4 mb-3">
-    <label class="form-label">Name:</label>
-    <input type="text" class="form-control" formControlName="name" />
-  </div>
-  </div>
+  <!-- Measurement Form -->
+  <form [formGroup]="measurementForm" (ngSubmit)="onSubmit()">
+    <h5 class="text-success mb-3">Measurements</h5>
+    <div class="row">
+      <div class="col-md-3 mb-3">
+        <label class="form-label">Blouse Length</label>
+        <input type="text" class="form-control" formControlName="blouseLength" />
+      </div>
+      <div class="col-md-3 mb-3">
+        <label class="form-label">Shoulder</label>
+        <input type="text" class="form-control" formControlName="shoulder" />
+      </div>
+      <div class="col-md-3 mb-3">
+        <label class="form-label">Chest</label>
+        <input type="text" class="form-control" formControlName="chest" />
+      </div>
+      <div class="col-md-3 mb-3">
+        <label class="form-label">Waist</label>
+        <input type="text" class="form-control" formControlName="waist" />
+      </div>
+    </div>
 
-  
+    <hr />
 
+    <!-- Payment Section -->
+    <h5 class="text-warning mb-3">Payment Details</h5>
+    <div class="row">
+      <div class="col-md-3 mb-3">
+        <label>Cost</label>
+        <input type="number" class="form-control" formControlName="cost" />
+      </div>
+      <div class="col-md-3 mb-3">
+        <label>Advance</label>
+        <input type="number" class="form-control" formControlName="advance" />
+      </div>
+      <div class="col-md-3 mb-3">
+        <label>Balance</label>
+        <input type="number" class="form-control" formControlName="balance" readonly />
+      </div>
+      <div class="col-md-3 mb-3">
+        <label>Payment Type</label>
+        <select class="form-select" formControlName="paymentType">
+          <option value="">Select</option>
+          <option value="Cash">Cash</option>
+          <option value="UPI">UPI</option>
+          <option value="Card">Card</option>
+        </select>
+      </div>
+    </div>
 
- <div class="row">
-<div class="col-md-4 mb-3">
-    <label class="form-label">Number:</label>
-    <input type="text" class="form-control" formControlName="number" />
-  </div>
-
-  <div class="col-md-4 mb-3">
-    <label class="form-label" placeholder="Dress Type">Dress Type</label>
-    <select class="form-select" formControlName="id">
-      <option value="">Select an option</option>
-      <option value="option1">Blouse</option>
-      <option value="option2">Chudidar</option>
-    </select>
-  </div>
-
-  <div class="col-md-4 mb-3">
-    <label class="form-label">Stich Type</label>
-    <select class="form-select" formControlName="id">
-      <option value="">Select an option</option>
-      <option value="optionA">New </option>
-      <option value="optionB">Alteration</option>
-    </select>
-  </div>
-</div>
-
-<div class=" mb-3">
-    <label class="form-label">Address:</label>
-    <input type="text" class="form-control" formControlName="address" />
-  </div>
-  <hr class="my-4" />
-
-  <!-- Measurement Section -->
-  <h5 class="text-success fw-bold mb-3">Measurements</h5>
-
-  <div class="row">
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Blouse Length</label>
-    <input type="text" class="form-control" formControlName="bust" />
-  </div>
-
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Shoulder</label>
-    <input type="text" class="form-control" formControlName="waist" />
-  </div>
-
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Chest</label>
-    <input type="text" class="form-control" formControlName="hip" />
-  </div>
-
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Waist</label>
-    <input type="text" class="form-control" formControlName="length" />
-  </div>
-  </div>
-
-  <div class="row">
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Sleeves Length</label>
-    <input type="text" class="form-control" formControlName="bust" />
-  </div>
-
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Sleeves Arm</label>
-    <input type="text" class="form-control" formControlName="waist" />
-  </div>
-
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Front Neck</label>
-    <input type="text" class="form-control" formControlName="hip" />
-  </div>
-
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Back Neck</label>
-    <input type="text" class="form-control" formControlName="length" />
-  </div>
-  </div>
-
-  <div class="row">
-  <div class="col-md-3 mb-3">
-    <label class="form-label" placeholder="Dress Type">Blouse Type</label>
-    <select class="form-select" formControlName="id">
-      <option value="">Select an option</option>
-      <option value="option1">Blouse</option>
-      <option value="option2">Normal</option>
-       <option value="option2">Princes Blouse</option>
-       <option value="option2">Katori</option>
-       <option value="option2">Custom Pattern</option>
-    </select>
-  </div>
-
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Top Length</label>
-    <input type="text" class="form-control" formControlName="waist" />
-  </div>
-
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Shoulder</label>
-    <input type="text" class="form-control" formControlName="hip" />
-  </div>
-
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Half Body length</label>
-    <input type="text" class="form-control" formControlName="length" />
-  </div>
-  </div>
-
-  <div class="row">
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Chest</label>
-    <input type="text" class="form-control" formControlName="bust" />
-  </div>
-
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Waist</label>
-    <input type="text" class="form-control" formControlName="waist" />
-  </div>
-
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Hip</label>
-    <input type="text" class="form-control" formControlName="hip" />
-  </div>
-
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Sleeve Length</label>
-    <input type="text" class="form-control" formControlName="length" />
-  </div>
-  </div>
-
-  <div class="row">
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Arm Length</label>
-    <input type="text" class="form-control" formControlName="bust" />
-  </div>
-
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Cuff</label>
-    <input type="text" class="form-control" formControlName="waist" />
-  </div>
-
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Front Neck</label>
-    <input type="text" class="form-control" formControlName="hip" />
-  </div>
-
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Back neck </label>
-    <input type="text" class="form-control" formControlName="length" />
-  </div>
-  </div>
-
-  <div class="row">
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Side Cut</label>
-    <input type="text" class="form-control" formControlName="sleeve" />
-  </div>
-
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Top Gear</label>
-    <input type="text" class="form-control" formControlName="sleeve" />
-  </div>
-
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Pant Length</label>
-    <input type="text" class="form-control" formControlName="sleeve" />
-  </div>
-
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Botton</label>
-    <input type="text" class="form-control" formControlName="sleeve" />
-  </div>
-  </div>
-
-   <div class="row">
-  <div class="col-md-3 mb-3">
-    <label class="form-label">Waist</label>
-    <input type="text" class="form-control" formControlName="sleeve" />
-  </div>
-
-  <div class="col-md-3 mb-3">
-    <label class="form-label" placeholder="Dress Type">Dress Type</label>
-    <select class="form-select" formControlName="id">
-      <option value="">Select an option</option>
-      <option value="option2">Normal</option>
-    </select>
-  </div>
-
-  <div class="col-md-3 mb-3">
-    <label class="form-label" placeholder="Dress Type">Pant Type</label>
-    <select class="form-select" placeholder="Dress Type"  formControlName="id">
-      <option value="">Select an option</option>
-      <option value="option1">Patiyala Pant</option>
-      <option value="option2">Rinkle Pant</option>
-       <option value="option2">Ankel Straight Pant</option>
-       <option value="option2">Dhoti Pant</option>
-       <option value="option2">Parallel Pant</option>
-    </select>
-  </div>
-  </div>
-  <hr class="my-4" />
-
-  <!-- Payment Info Section -->
-  <h5 class="text-warning fw-bold mb-3">Payment Details</h5>
-
-  <div class="row">
-  <div class="col-md-4 mb-3">
-    <label class="form-label">Delivery Date:</label>
-    <input type="date" class="form-control" formControlName="deliveryDate" />
-</div>
-
-<div class="col-md-4 mb-3">
-  <label for="fileUpload" class="form-label">Upload File</label>
-  <input type="file" class="form-control" id="fileUpload" (change)="onFileSelected($event)">
-</div> 
-
-<div class="col-md-4 mb-3">
-    <label class="form-label" placeholder="Dress Type">Payment Type</label>
-    <select class="form-select" formControlName="id">
-      <option value="">Select an option</option>
-      <option value="option1">Cash</option>
-      <option value="option2">UPI</option>
-      <option value="option2">Card</option>
-    </select>
-  </div>
-  </div>
-
-<div class="row">
-  <div class="col-md-4 mb-3">
-    <label class="form-label">Total Amount:</label>
-    <input type="number" class="form-control" formControlName="totalAmount" />
-  </div>
-
-  <div class="col-md-4 mb-3">
-    <label class="form-label">Amount Paid:</label>
-    <input type="number" class="form-control" formControlName="amountPaid" />
-  </div>
-
-  <div class="col-md-4 mb-3">
-    <label class="form-label">Balance:</label>
-    <input type="number" class="form-control" formControlName="balance" />
-  </div>
-  </div>
-
-  
-
-
-  <div class="text-center mt-4">
-    <button type="submit" class="btn btn-primary px-4 py-2">Submit</button>
-  </div>
-
-  </div>
-</form>
-<br>
+    <div class="text-center mt-4">
+      <button class="btn btn-primary px-5 py-2" type="submit">
+        Save
+      </button>
+    </div>
+  </form>
 </div>

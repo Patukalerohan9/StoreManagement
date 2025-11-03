@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,70 +11,59 @@ import Swal from 'sweetalert2';
 })
 export class FormComponent implements OnInit {
   measurementForm!: FormGroup;
-   
- 
+  customerData: any;
 
-  constructor(private fb: FormBuilder,private router: Router) {}
+  constructor(private route: ActivatedRoute, private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.loadCustomerDetails(id);
+    this.createForm();
+  }
+
+  loadCustomerDetails(id: any) {
+    // Temporary mock — replace with actual service call later
+    const mockData = [
+      { id: 1, name: 'Anjali', number: '9876543210', dressType: 'Blouse', status: 'Pending with Measurement', deliveryDate: '2025-05-18', cost: 800 },
+      { id: 2, name: 'Sneha', number: '9123456789', dressType: 'Chudidar', status: 'Pending with Measurement', deliveryDate: '2025-05-20', cost: 1200 },
+      { id: 3, name: 'Sneha', number: '9123456789', dressType: 'Chudidar', status: 'Pending with Measurement', deliveryDate: '2025-05-20', cost: 1200 }
+    ];
+    this.customerData = mockData.find(x => x.id == id);
+  }
+
+  createForm() {
     this.measurementForm = this.fb.group({
-      date: [this.getTodayDate()],
-      personalInfo: this.fb.group({
-        name: [''],
-        number:[''],
-        address:[''],
-        id: [''],
-        date: ['']
-      }),
-      measurements: this.fb.group({
-        bust: [''],
-        waist: [''],
-        hip:[''],
-        length: [''],
-        sleeve: ['']
-      }),
-      paymentInfo: this.fb.group({
-        deliveryDate: [''],
-        totalAmount: [''],
-        amountPaid: [''],
-        balance:[''],
-      })
+      blouseLength: [''],
+      shoulder: [''],
+      chest: [''],
+      waist: [''],
+      sleeveLength: [''],
+      deliveryDate: [''],
+      paymentType: [''],
+      cost: [0],
+      advance: [0],
+      balance: [{ value: 0, disabled: true }]
+    });
+
+    // auto-calculate balance
+    this.measurementForm.valueChanges.subscribe(val => {
+      const cost = val.cost || 0;
+      const adv = val.advance || 0;
+      this.measurementForm.patchValue(
+        { balance: cost - adv },
+        { emitEvent: false }
+      );
     });
   }
 
-  onSubmit(): void {
-  if (this.measurementForm.valid) {
-    console.log('Form Submitted:', this.measurementForm.value);
-
-    Swal.fire({
-      icon: 'success',
-      title: 'Success!',
-      text: 'Form submitted successfully.',
-      confirmButtonColor: '#3085d6'
-    }).then(() => {
-  
-      this.router.navigate(['/custdetails']); 
-    });
-
-  } else {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Please fill in all required fields!',
-      confirmButtonColor: '#d33'
-    });
-  }
-}
-
-  onFileSelected(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      console.log('Selected file:', file);
+  onSubmit() {
+    if (this.measurementForm.valid) {
+      const payload = {
+        ...this.measurementForm.getRawValue(),
+        customerId: this.customerData.id
+      };
+      console.log('Submitted Measurement + Payment:', payload);
+      alert('Data saved successfully!');
     }
   }
-
-  getTodayDate(): string {
-  const today = new Date();
-  return today.toISOString().substring(0, 10); // Format: 'YYYY-MM-DD
-}
 }

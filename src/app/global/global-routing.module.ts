@@ -7,6 +7,7 @@ import { UpdateComponent } from './update/update.component';
 import { InventoryoutdoorComponent } from './inventoryoutdoor/inventoryoutdoor.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { LoginComponent } from './login/login.component';
+import { NeworderComponent } from './neworder/neworder.component';
 
 const routes: Routes = [
 { path: 'form', component: FormComponent },
@@ -17,6 +18,8 @@ const routes: Routes = [
    { path: 'employee', component: EmployeeComponent },
     { path: 'inventoryoutdoor', component: InventoryoutdoorComponent },
      { path: 'login', component: LoginComponent},
+     {path: 'neworder',component:NeworderComponent},
+     { path: 'form/:id', component: FormComponent }
     
 ];
 
