@@ -21,23 +21,61 @@ export class FormComponent implements OnInit {
     this.createForm();
   }
 
-  loadCustomerDetails(id: any) {
-    // Temporary mock — replace with actual service call later
-    const mockData = [
-      { id: 1, name: 'Anjali', number: '9876543210', dressType: 'Blouse', status: 'Pending with Measurement', deliveryDate: '2025-05-18', cost: 800 },
-      { id: 2, name: 'Sneha', number: '9123456789', dressType: 'Chudidar', status: 'Pending with Measurement', deliveryDate: '2025-05-20', cost: 1200 },
-      { id: 3, name: 'Sneha', number: '9123456789', dressType: 'Chudidar', status: 'Pending with Measurement', deliveryDate: '2025-05-20', cost: 1200 }
-    ];
-    this.customerData = mockData.find(x => x.id == id);
+  get dressType(): string {
+    return this.customerData?.dressType || '';
   }
+
+  loadCustomerDetails(id: string | null) {
+    // Mock data
+    const mockData = [
+      { id: 1, name: 'Anjali', number: '9876543210', dressType: 'Blouse', status: 'Pending For Measurement', deliveryDate: '2025-05-18',StitchType:'New'  },
+      { id: 2, name: 'Varsha', number: '9123456789', dressType: 'Dress', status: 'Pending For Measurement', deliveryDate: '2025-05-20',StitchType:'New' },
+      { id: 3, name: 'Sneha', number: '9123456789', dressType: 'Blouse', status: 'Pending For Measurement', deliveryDate: '2025-05-20',StitchType:'New'  }
+    ];
+
+    // Convert id to number for comparison
+    this.customerData = mockData.find(x => x.id === Number(id));
+
+    if (this.customerData) {
+      // Patch values to form
+      this.measurementForm?.patchValue({
+        deliveryDate: this.customerData.deliveryDate,
+        cost: this.customerData.cost,
+        status: this.customerData.status.trim()
+      });
+    } else {
+      console.warn('Customer not found with id:', id);
+    }
+  } 
+  
 
   createForm() {
     this.measurementForm = this.fb.group({
+      status:[''],
       blouseLength: [''],
-      shoulder: [''],
-      chest: [''],
-      waist: [''],
+      blouseShoulder: [''],
+      blouseChest: [''],
+      blouseWaist: [''],
       sleeveLength: [''],
+      sleeveArm: [''],
+      sleeveCuff: [''],
+      frontNeck: [''],
+      backNeck: [''],
+      topLength: [''],
+      topShoulder: [''],
+      halfBodyLength: [''],
+      topChest: [''],
+      topWaist: [''],
+      hip: [''],
+      topSleeveLength: [''],
+      topSleeveArm: [''],
+      topCuff: [''],
+      topFrontNeck: [''],
+      topBackNeck: [''],
+      sideCut: [''],
+      topGear: [''],
+      pantLength: [''],
+      pantBottom: [''],
       deliveryDate: [''],
       paymentType: [''],
       cost: [0],
@@ -45,22 +83,21 @@ export class FormComponent implements OnInit {
       balance: [{ value: 0, disabled: true }]
     });
 
-    // auto-calculate balance
     this.measurementForm.valueChanges.subscribe(val => {
-      const cost = val.cost || 0;
-      const adv = val.advance || 0;
-      this.measurementForm.patchValue(
-        { balance: cost - adv },
-        { emitEvent: false }
-      );
-    });
+    const cost = val.cost || 0;
+    const advance = val.advance || 0;
+    this.measurementForm.patchValue(
+      { balance: cost - advance },
+      { emitEvent: false }  // prevent infinite loop
+    );
+  });
   }
 
   onSubmit() {
     if (this.measurementForm.valid) {
       const payload = {
         ...this.measurementForm.getRawValue(),
-        customerId: this.customerData.id
+        customerId: this.customerData?.id
       };
       console.log('Submitted Measurement + Payment:', payload);
       alert('Data saved successfully!');

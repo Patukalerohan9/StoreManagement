@@ -1,62 +1,215 @@
-<div class="container my-4 p-4 bg-light rounded-4 shadow-sm">
-  <h4 class="text-primary mb-4 text-center">Measurement & Payment</h4>
+<div class="double-bg ">
+  <div class="container my-4 p-3 p-md-4 bg-white  shadow-sm ">
+    <h4 class="mb-4 text-center  fw-bold">Measurement & Payment</h4>
 
-  <!-- Customer Info -->
-  <div *ngIf="customerData" class="border rounded-3 p-3 mb-4 bg-white">
-    <h5 class="text-success mb-3">Customer Information</h5>
-    <div class="row">
-      <div class="col-md-4"><b>Name:</b> {{ customerData.name }}</div>
-      <div class="col-md-4"><b>Mobile:</b> {{ customerData.number }}</div>
-      <div class="col-md-4"><b>Dress Type:</b> {{ customerData.dressType }}</div>
-    </div>
-    <div class="row mt-2">
-      <div class="col-md-4"><b>Status:</b> {{ customerData.status }}</div>
-      <div class="col-md-4"><b>Delivery Date:</b> {{ customerData.deliveryDate }}</div>
-      <div class="col-md-4"><b>Cost:</b> ₹{{ customerData.cost }}</div>
-    </div>
+    <!-- Customer Info -->
+    <div *ngIf="customerData" class=" p-3 mb-4 ">
+  <h5 class=" mb-3 text-center text-md-start">Customer Information</h5>
+
+  <div class="row gy-2 bg-light p-3">
+    <div class="col-12 col-md-4"><b>Name:</b> {{ customerData.name }}</div>
+    <div class="col-12 col-md-4"><b>Mobile:</b> {{ customerData.number }}</div>
+    <div class="col-12 col-md-4"><b>Dress Type:</b> {{ customerData.dressType }}</div>
+     <div class="col-12 col-md-4"><b>Stitch Type:</b> {{ customerData.StitchType }}</div>
+      <div class="col-12 col-md-4"><b>Start Date:</b> {{ customerData.deliveryDate }}</div>
+
+     
   </div>
-
-  <!-- Measurement Form -->
-  <form [formGroup]="measurementForm" (ngSubmit)="onSubmit()">
-    <h5 class="text-success mb-3">Measurements</h5>
-    <div class="row">
-      <div class="col-md-3 mb-3">
+  </div>
+  <hr>
+    <!-- Measurement Form -->
+   <form [formGroup]="measurementForm" (ngSubmit)="onSubmit()">
+    
+  <!-- Blouse Fields -->
+  <div *ngIf="dressType === 'Blouse'">
+    <h5>Blouse Measurements</h5>
+    <div class="row gy-3">
+      <div class="col-md-3">
         <label class="form-label">Blouse Length</label>
         <input type="text" class="form-control" formControlName="blouseLength" />
       </div>
-      <div class="col-md-3 mb-3">
+      <div class="col-md-3">
+        <label class="form-label">Blouse Shoulder</label>
+        <input type="text" class="form-control" formControlName="blouseShoulder" />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Blouse Chest</label>
+        <input type="text" class="form-control" formControlName="blouseChest" />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Blouse Waist</label>
+        <input type="text" class="form-control" formControlName="blouseWaist" />
+      </div>
+      <!-- add remaining blouse fields similarly -->
+    </div>
+
+    <div class="row gy-3">
+      <div class="col-md-3">
+        <label class="form-label">Blouse Length</label>
+        <input type="text" class="form-control" formControlName="blouseLength" />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Blouse Shoulder</label>
+        <input type="text" class="form-control" formControlName="blouseShoulder" />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Blouse Chest</label>
+        <input type="text" class="form-control" formControlName="blouseChest" />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Blouse Waist</label>
+        <input type="text" class="form-control" formControlName="blouseWaist" />
+      </div>
+      <!-- add remaining blouse fields similarly -->
+    </div>
+<div class="row">
+     <div class="col-md-3">
+        <label class="form-label">Blouse Waist</label>
+        <input type="text" class="form-control" formControlName="blouseWaist" />
+      </div>
+      <!-- add remaining blouse fields similarly -->
+    </div>
+
+        <div class="row"> 
+    <div class="col-md-3 ">
+    <label class="form-label">Select Blouse Type</label>
+    <select class="form-select" formControlName="dressType" placeholder="Select">
+      <option value="">Normal</option>
+      <option value="">Princes blouse</option>
+      <option value="">Katori</option>
+      <option value="">Custom </option>
+    </select>
+  </div>
+  </div>
+  </div>
+
+  
+  
+
+  <!-- Dress Only Fields -->
+  <div *ngIf="dressType === 'Dress'">
+    <h5>Pant Measurements</h5>
+    <div class="row gy-3">
+      <div class="col-md-3">
+        <label class="form-label">Top Length</label>
+        <input type="text" class="form-control" formControlName="pantLength" />
+      </div>
+      <div class="col-md-3">
         <label class="form-label">Shoulder</label>
-        <input type="text" class="form-control" formControlName="shoulder" />
+        <input type="text" class="form-control" formControlName="pantBottom" />
       </div>
-      <div class="col-md-3 mb-3">
-        <label class="form-label">Chest</label>
-        <input type="text" class="form-control" formControlName="chest" />
+      <div class="col-md-3">
+        <label class="form-label">Half Body Length</label>
+        <input type="text" class="form-control" formControlName="pantLength" />
       </div>
-      <div class="col-md-3 mb-3">
-        <label class="form-label">Waist</label>
-        <input type="text" class="form-control" formControlName="waist" />
+      <div class="col-md-3">
+        <label class="form-label">Top chest </label>
+        <input type="text" class="form-control" formControlName="pantLength" />
+      </div>
+    </div>
+     <div class="row gy-3">
+      <div class="col-md-3">
+        <label class="form-label">TOP Waist</label>
+        <input type="text" class="form-control" formControlName="pantLength" />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Hip</label>
+        <input type="text" class="form-control" formControlName="pantBottom" />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Sleev Length</label>
+        <input type="text" class="form-control" formControlName="pantLength" />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Arm</label>
+        <input type="text" class="form-control" formControlName="pantLength" />
+      </div>
+    </div>
+     <div class="row gy-3">
+      <div class="col-md-3">
+        <label class="form-label">Cuff</label>
+        <input type="text" class="form-control" formControlName="pantLength" />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Front Neck</label>
+        <input type="text" class="form-control" formControlName="pantBottom" />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Back Neck </label>
+        <input type="text" class="form-control" formControlName="pantLength" />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Side Cut</label>
+        <input type="text" class="form-control" formControlName="pantLength" />
+      </div>
+    </div>
+     <div class="row gy-3">
+      <div class="col-md-3">
+        <label class="form-label">Top Gear</label>
+        <input type="text" class="form-control" formControlName="pantLength" />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Pant Lenth</label>
+        <input type="text" class="form-control" formControlName="pantBottom" />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Pant Botton</label>
+        <input type="text" class="form-control" formControlName="pantLength" />
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Pant Waist</label>
+        <input type="text" class="form-control" formControlName="pantLength" />
       </div>
     </div>
 
-    <hr />
+    <div class="row"> 
+    <div class="col-md-3 ">
+    <label class="form-label">Select Pant Type</label>
+    <select class="form-select" formControlName="dressType" placeholder="Select">
+      <option value="">Patiyal</option>
+      <option value="">Rinkle</option>
+      <option value="">Ankel straigt</option>
+      <option value="">Dhoti pant</option>
+      <option value="">Parallel</option>
+    </select>
+  </div>
 
-    <!-- Payment Section -->
-    <h5 class="text-warning mb-3">Payment Details</h5>
-    <div class="row">
-      <div class="col-md-3 mb-3">
-        <label>Cost</label>
+  
+  </div>
+
+  
+
+  </div>
+
+  <div class="row">
+  <div class="col-md-3 p-3">
+<select class="form-select" formControlName="status">
+  <option value="">Select</option>
+  <option value="Assign-Pending">Assign-Pending/Outsource</option>
+</select>
+</div>
+</div>
+
+    
+<hr>
+  <!-- Payment Section -->
+  <div class="mt-4">
+    <h5>Payment</h5>
+    <div class="row gy-3">
+      <div class="col-md-3">
+        <label class="form-label">Cost</label>
         <input type="number" class="form-control" formControlName="cost" />
       </div>
-      <div class="col-md-3 mb-3">
-        <label>Advance</label>
+      <div class="col-md-3">
+        <label class="form-label">Advance</label>
         <input type="number" class="form-control" formControlName="advance" />
       </div>
-      <div class="col-md-3 mb-3">
-        <label>Balance</label>
+      <div class="col-md-3">
+        <label class="form-label">Balance</label>
         <input type="number" class="form-control" formControlName="balance" readonly />
       </div>
-      <div class="col-md-3 mb-3">
-        <label>Payment Type</label>
+<div class="col-md-3">
+        <label class="form-label">Payment Type</label>
         <select class="form-select" formControlName="paymentType">
           <option value="">Select</option>
           <option value="Cash">Cash</option>
@@ -64,12 +217,19 @@
           <option value="Card">Card</option>
         </select>
       </div>
-    </div>
+      
+  </div>
+  
+      
 
-    <div class="text-center mt-4">
-      <button class="btn btn-primary px-5 py-2" type="submit">
-        Save
-      </button>
-    </div>
-  </form>
+    
+   
+</div>
+  <div class="text-center mt-4">
+    <button class="btn btn-primary px-5" type="submit">Save</button>
+  </div>
+</form>
+
+  </div>
+
 </div>

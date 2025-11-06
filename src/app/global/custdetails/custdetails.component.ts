@@ -53,6 +53,13 @@ export class CustdetailsComponent implements OnInit {
       this.page = 1;
     });
   }
+assignEmployee(customer: any) {
+  // Save customer details to sessionStorage
+  sessionStorage.setItem('selectedCustomer', JSON.stringify(customer));
+
+  // Navigate to employee page
+  this.router.navigate(['/employee']);
+}
 
   filteredCustomers() {
     const text = this.searchForm.get('searchText')?.value?.toLowerCase() || '';
@@ -72,6 +79,14 @@ export class CustdetailsComponent implements OnInit {
  updateCustomer(customer: any): void {
   sessionStorage.setItem('editCustomer', JSON.stringify(customer)); // store customer data
   this.router.navigate(['/update']); // navigate to update page
+}
+
+outsourceCustomer(customer: any) {
+  // Store customer data in sessionStorage
+  sessionStorage.setItem('outsourceCustomer', JSON.stringify(customer));
+
+  // Navigate to outsource form
+  this.router.navigate(['/inventoryoutdoor']);
 }
 
   
